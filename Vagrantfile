@@ -17,4 +17,6 @@ Vagrant.configure(2) do |config|
     
     # hostname виртуальной машины
     config.vm.hostname = "OTUS.Lesson12.Systemd"
+    config.vm.network "public_network",
+	    use_dhcp_assigned_default_route: true
   end
