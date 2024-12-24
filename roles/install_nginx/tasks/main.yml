@@ -1,0 +1,23 @@
+---
+# tasks file for nginx
+
+- name: apt update
+  ansible.builtin.apt:
+    update_cache: yes
+    cache_valid_time: 3600
+
+- name: install nginx
+  ansible.builtin.apt:
+    name: nginx
+    state: latest
+
+- name: copy template to nginx folder
+  ansible.builtin.template:
+    src: template_less12.j2
+    dest: '/etc/nginx/nginx-{{ item.name }}.conf'
+  with_items: '{{ instance }}'
+  notify:
+    - restart_nginx
+  tags:
+  - nginx-configuration
+

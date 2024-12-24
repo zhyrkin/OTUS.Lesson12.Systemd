@@ -1,0 +1,6 @@
+---
+- name: install utils
+  ansible.builtin.apt:
+    name: '{{ item }}'
+    state: '{{ state | default("latest") }}'
+  with_items: '{{utils}}'

@@ -1,0 +1,7 @@
+---
+- name: restart_nginx
+  ansible.builtin.systemd:
+    name: nginx@{{ item.name }}
+    enabled: yes
+    state: restarted
+  with_items: '{{ instance }}'

@@ -1,0 +1,11 @@
+---
+- name: Create service variables file
+  ansible.builtin.file:
+    path: '{{ path }}'
+    state: touch
+
+- name: Set config file
+  ansible.builtin.lineinfile:
+    path: '{{ path }}'
+    line: '{{ config_text }}'
+    state: present

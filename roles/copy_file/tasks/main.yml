@@ -1,0 +1,7 @@
+---
+- name: Copy
+  ansible.builtin.copy:
+    src: '{{ source }}'
+    dest: '{{ dest }}'
+    remote_src: '{{ remote_src | default("false") }}'
+    mode: '{{ mode | default("0644") }}'
